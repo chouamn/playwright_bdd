@@ -1,0 +1,26 @@
+{
+  "name": "census-isr-json-automation",
+  "version": "0.1.0",
+  "description": "Census ISR JSON Automation Framework (POC) - Playwright + TypeScript + Cucumber BDD, expected content stored in JSON",
+  "private": true,
+  "scripts": {
+    "test:login": "cucumber-js --tags @login",
+    "test:confirm": "cucumber-js --tags @confirm",
+    "test:verify": "cucumber-js --tags @verify",
+    "test:regression": "cucumber-js --tags @regression",
+    "test:dry-run": "cucumber-js --profile dryRun",
+    "typecheck": "tsc --noEmit",
+    "clean:reports": "node -e \"const fs=require('fs');for(const d of ['reports/screenshots','reports/traces'])fs.rmSync(d,{recursive:true,force:true});for(const f of ['reports/cucumber-report.html','reports/cucumber-report.json'])fs.rmSync(f,{force:true});\"",
+    "install:browsers": "playwright install chromium",
+    "install:all-browsers": "playwright install",
+    "test": "npm run test:regression"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@types/node": "^22.15.0",
+    "dotenv": "^16.5.0",
+    "playwright": "^1.52.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

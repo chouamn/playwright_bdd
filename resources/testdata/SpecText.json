@@ -1,0 +1,146 @@
+{
+  "_readme": [
+    "Expected screen and Help content, organized by SCREEN -> LANGUAGE (EN / ES).",
+    "Keys that start with an underscore (_readme, _source, _todo, _note) are comments and are ignored by the framework.",
+    "content = the ordered list of text blocks (paragraphs, headings, options, buttons) exactly as they appear top-to-bottom.",
+    "Block fields: type (label for error messages), text (one line) OR lines (several lines separated by <br>), bold (whole block bold), boldText (only these fragments are bold; everything else must be non-bold), underlineText / italicText (optional), tag (optional HTML tag check, e.g. h1), style (optional computed CSS check, e.g. {\"fontSize\": \"24px\"}).",
+    "{CENSUS_DAY} is replaced with CENSUS_DAY from resources/environment/.env.uat before comparing.",
+    "Only LOGIN content is stored for reference; the current feature files validate CONFIRM landing content and the CONFIRM / VERIFY Help modals only."
+  ],
+
+  "screens": {
+    "LOGIN": {
+      "EN": {
+        "_source": "Screenshot 1 - login page (header reads '2026 Census Test').",
+        "_todo": [
+          "Screenshot 1 says '2026 Census Test' while the CONFIRM/VERIFY screenshots say '2027 Census Test'. Confirm which year the UAT build shows.",
+          "'on April 1, 2026' may be the Census Day value. If so, replace it with {CENSUS_DAY}.",
+          "The Notice and Consent Warning text is very small in the screenshot. Verify it word-for-word against the DOM.",
+          "Confirm whether the privacy URL and 'Use of this system...' are separate paragraphs or separated by <br>.",
+          "Bold/non-bold for the notice title and the 'Log In' button could not be confirmed from the screenshot.",
+          "Apostrophe in workers' (straight ' vs curly ’) could not be confirmed.",
+          "Header (FAQ, Español) and footer (OMB No., Accessibility, Privacy, Security, Contact Us) text is not included."
+        ],
+        "content": [
+          { "type": "heading", "text": "Welcome to the 2026 Census Test", "bold": true },
+          { "type": "paragraph", "text": "This 2026 Census Test questionnaire will be used to count people who, on April 1, 2026, were living or staying in certain types of group quarters, such as college residence halls, skilled-nursing facilities, assisted living facilities, group homes, halfway houses, residential treatment centers, military barracks, correctional facilities, workers' dormitories, and residential vocational training programs." },
+          { "type": "paragraph", "text": "To complete your 2026 Census Test questionnaire, please enter the 12-digit Census ID provided in either the email or letter that you received." },
+          { "type": "label", "text": "Census ID (12-digit)" },
+          { "type": "button", "text": "Log In" },
+          { "type": "paragraph", "text": "Your session will expire after 15 minutes of inactivity. If you leave the questionnaire and return later, you will have to start over." },
+          { "type": "paragraph", "text": "Do not use the web browser buttons (back, forward) or close browser. Use the buttons within the questionnaire to navigate. For best results, use the latest version of Chrome, Firefox, Edge, or Safari. Enable cookies." },
+          { "type": "heading", "text": "U.S. Census Bureau Notice and Consent Warning" },
+          { "type": "paragraph", "text": "You are accessing a United States Government computer network. Any information you enter into this system is confidential. It may be used by the Census Bureau for statistical purposes and to improve the website. If you want to know more about the use of this system, and how your privacy is protected, visit our online privacy webpage at https://www.census.gov/about/policies/privacy/privacy-policy.html." },
+          { "type": "paragraph", "text": "Use of this system indicates your consent to collection, monitoring, recording, and use of the information that you provide for any lawful government purpose. So that our website remains safe and available for its intended use, network traffic is monitored to identify unauthorized attempts to access, upload, change information, or otherwise cause damage to the web service. Use of the government computer network for unauthorized purposes is a violation of Federal law and can be punished with fines or imprisonment (PUBLIC LAW 99-474)." }
+        ]
+      },
+      "ES": {
+        "_todo": ["Spanish LOGIN content was not provided. Add it from a Spanish screenshot or spec."],
+        "content": []
+      }
+    },
+
+    "CONFIRM": {
+      "EN": {
+        "_source": "Screenshot 2 - CONFIRM landing page.",
+        "_todo": [
+          "The question says 'for the address below?' but no address is visible in the screenshot. If the address renders inside the content container, add a block for it here (after the question) or the order check will fail.",
+          "Bold on the 'Next' button is based on the screenshot only. Confirm against the DOM.",
+          "Confirm that 'Help' is on the same line (same block) as the question in the DOM."
+        ],
+        "content": [
+          { "type": "heading", "text": "CONFIRM", "bold": true },
+          {
+            "type": "question",
+            "text": "Are you completing the 2027 Census Test questionnaire for the address below? Help",
+            "boldText": ["Are you completing the 2027 Census Test questionnaire for the address below?"]
+          },
+          { "type": "option", "text": "Yes" },
+          { "type": "option", "text": "No" },
+          { "type": "button", "text": "Next", "bold": true }
+        ]
+      },
+      "ES": {
+        "_todo": ["Spanish CONFIRM content was not provided. Add it from a Spanish screenshot or spec."],
+        "content": []
+      }
+    },
+
+    "VERIFY": {
+      "EN": {
+        "_source": "Screenshot 4 - VERIFY ADDRESS landing page.",
+        "_todo": [
+          "The screenshot shows 'staying at ?' - the address was blank in that build. Add the address once known.",
+          "The screenshot shows 'December 31, 1969' (an unset date default), so {CENSUS_DAY} is used instead.",
+          "Not validated by the current feature files; stored for reference only."
+        ],
+        "content": [
+          { "type": "heading", "text": "VERIFY ADDRESS", "bold": true },
+          {
+            "type": "question",
+            "text": "On {CENSUS_DAY}, will you be living or staying at ? Help",
+            "boldText": ["On {CENSUS_DAY}, will you be living or staying at ?"]
+          },
+          { "type": "option", "text": "Yes" },
+          { "type": "option", "text": "No" },
+          { "type": "button", "text": "Next", "bold": true }
+        ]
+      },
+      "ES": {
+        "_todo": ["Spanish VERIFY content was not provided. Add it from a Spanish screenshot or spec."],
+        "content": []
+      }
+    }
+  },
+
+  "helpModals": {
+    "CONFIRM": {
+      "EN": {
+        "_source": "Screenshot 3 - CONFIRM Help modal.",
+        "title": "Help",
+        "closeButton": "Close",
+        "content": [
+          { "type": "paragraph", "text": "We need to make sure that you are completing the 2027 Census Test questionnaire for the correct address. The address in this question should match the one to which we mailed the information. If this address is not the same, please answer “no” to this question." }
+        ]
+      },
+      "ES": {
+        "_todo": ["Spanish CONFIRM Help content was not provided. Add it from a Spanish screenshot or spec."],
+        "title": "",
+        "closeButton": "",
+        "content": []
+      }
+    },
+
+    "VERIFY": {
+      "EN": {
+        "_source": "Screenshot 5 - VERIFY Help modal. The screenshot shows 'December 31, 1969', replaced here by {CENSUS_DAY}.",
+        "_todo": [
+          "Confirm whether the bold 'Why do we ask...' line and the 'Every respondent...' text are one paragraph separated by <br> (as modelled here) or two separate paragraphs.",
+          "Quote characters around \"Yes\" and \"No.\" look straight in the screenshot. Confirm straight (\") vs curly (“ ”) in the DOM."
+        ],
+        "title": "Help",
+        "closeButton": "Close",
+        "content": [
+          { "type": "paragraph", "text": "We need to count people where they live and sleep most of the time." },
+          { "type": "paragraph", "text": "Answer \"Yes\" if you will be living or staying at the address in this question on {CENSUS_DAY}." },
+          { "type": "paragraph", "text": "Otherwise, answer \"No.\"" },
+          {
+            "type": "paragraph",
+            "lines": [
+              "Why do we ask about {CENSUS_DAY}?",
+              "Every respondent is asked about the same day so that the results are consistent. Census Day is {CENSUS_DAY}."
+            ],
+            "boldText": ["Why do we ask about {CENSUS_DAY}?"]
+          },
+          { "type": "paragraph", "text": "By law, the Census Bureau can only use your responses to produce statistics. The Census Bureau is required by law to protect your information (Title 13, U.S. Code, Section 9). The Census Bureau is not permitted to publicly release your responses in a way that could identify you or your household. Your answers cannot be used against you by any government agency or court." }
+        ]
+      },
+      "ES": {
+        "_todo": ["Spanish VERIFY Help content was not provided. Add it from a Spanish screenshot or spec."],
+        "title": "",
+        "closeButton": "",
+        "content": []
+      }
+    }
+  }
+}

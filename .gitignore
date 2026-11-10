@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+# Generated test output (keep the folder itself)
+reports/*
+!reports/.gitkeep
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
